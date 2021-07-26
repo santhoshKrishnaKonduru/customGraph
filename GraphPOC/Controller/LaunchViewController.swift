@@ -49,7 +49,7 @@ class LaunchViewController: UIViewController {
     
     func loadCountryResponse(response: JSONArray) {
         appData.countries = Mapper<Country>().mapArray(JSONObject: response)
-        appData.filterdCountries = Array(appData.countries?.prefix(5) ?? [])
+        appData.filterdCountries = Array(appData.countries?.suffix(5) ?? [])
         self.getWorldCovidData()
     }
     

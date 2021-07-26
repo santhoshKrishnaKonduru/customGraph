@@ -22,7 +22,11 @@ func getWorldWideConfirmYPoistion(from confirmCases: Double, rowHeight: CGFloat,
                 rowPosition = index
                 let rangeDiff = abs(range1Double - range2Double)
                 let totalDiff = CGFloat(confirmCases) - (CGFloat(4 - index) * CGFloat(rangeDiff))
-                yPosition = (rowHeight/CGFloat(rangeDiff)) * totalDiff
+                if rangeDiff == 0 {
+                    yPosition = 0
+                }else {
+                    yPosition = (rowHeight/CGFloat(rangeDiff)) * totalDiff
+                }
                 break
             }
         }

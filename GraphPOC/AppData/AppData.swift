@@ -107,6 +107,10 @@ extension AppData {
         for (index, currentDate) in (covidData ?? []).enumerated() {
             if let nextDate = covidData?[safe: index + 1] {
                 
+                if nextDate.Confirmed ?? 0 > 0 {
+                    print("some data")
+                }
+                
                 nextDate.currentConfirmed = (nextDate.Confirmed ?? 0) - (currentDate.Confirmed ?? 0)
                 nextDate.currentRecovered = (nextDate.Recovered ?? 0) - (currentDate.Recovered ?? 0)
                 nextDate.currentDeaths = (nextDate.Deaths ?? 0) - (currentDate.Deaths ?? 0)
@@ -125,7 +129,8 @@ extension AppData {
                         print("no image found")
                         self.totalCovidData.append(totaldata)
                         completion?()
-                        return }
+                        return
+                    }
                     print("image downloaded successfully")
                     totaldata.country?.countryFlag = UIImage(data: data)
                     self.totalCovidData.append(totaldata)
@@ -158,18 +163,18 @@ extension AppData {
             }else {
                 totalDates = date.getAllDays()
             }
-            let startDate = totalDates.first!
-            let endDate = totalDates.last!
+            let startDate = totalDates.first!.startDateOfTheDay()
+            let endDate = totalDates.last!.startDateOfTheDay()
 
             filterdData = covidData.filter({ (covid) -> Bool in
-                guard let date = covid.Date else {
+                guard let date = covid.Date?.startDateOfTheDay() else {
                     return false
                 }
     
                 let range = startDate...endDate
                 return range.contains(date.startDateOfTheDay())
             })
-            tempData.TotalConfirmed = (filterdData.last?.Confirmed ?? 0) - (filterdData.first?.Confirmed ?? 0)
+            tempData.TotalConfirmed = (filterdData.last?.Confirmed ?? 0) - (covidData.first?.Confirmed ?? 0)
             tempData.covidData = filterdData
             tempCovidData.append(tempData)
         }
