@@ -51,9 +51,22 @@
             <objects>
                 <viewController storyboardIdentifier="GraphDetailsViewController" id="fI8-Of-hSd" customClass="GraphDetailsViewController" customModule="GraphPOC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="90K-o7-Cuk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="2200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xt-iL-zfb">
+                                <rect key="frame" x="374" y="44" width="30" height="30"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Map">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title="Graph">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnOpenMapAction:" destination="fI8-Of-hSd" eventType="touchUpInside" id="ZDR-JZ-ozX"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FcK-SJ-u5h">
                                 <rect key="frame" x="66" y="77" width="280" height="40"/>
                                 <subviews>
@@ -119,7 +132,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xEd-hD-zgQ">
-                                <rect key="frame" x="8.5" y="234" width="394" height="1932"/>
+                                <rect key="frame" x="8.5" y="234" width="394" height="628"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DxQ-QY-pV3">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="1681"/>
@@ -1041,6 +1054,25 @@
                                     <action selector="didTapOnRightButton:" destination="fI8-Of-hSd" eventType="touchUpInside" id="NR6-92-mKU"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q5X-gg-ws3">
+                                <rect key="frame" x="0.0" y="74" width="414" height="822"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hr2-Id-wUD" customClass="GMSMapView">
+                                        <rect key="frame" x="0.0" y="10" width="414" height="812"/>
+                                        <color key="backgroundColor" red="0.025605285540000002" green="0.026134390380000001" blue="0.1764828265" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="fI8-Of-hSd" id="dCT-Zf-MhM"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.025605285540000002" green="0.026134390380000001" blue="0.1764828265" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hr2-Id-wUD" secondAttribute="trailing" id="1O8-Ti-Tgd"/>
+                                    <constraint firstAttribute="bottom" secondItem="hr2-Id-wUD" secondAttribute="bottom" id="AXY-SC-Esn"/>
+                                    <constraint firstItem="hr2-Id-wUD" firstAttribute="top" secondItem="Q5X-gg-ws3" secondAttribute="top" constant="10" id="TOR-qo-RUO"/>
+                                    <constraint firstItem="hr2-Id-wUD" firstAttribute="leading" secondItem="Q5X-gg-ws3" secondAttribute="leading" id="vmd-Y5-cMh"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mps-VZ-pnA">
                                 <rect key="frame" x="20" y="147" width="46" height="30"/>
                                 <constraints>
@@ -1058,10 +1090,14 @@
                             <constraint firstItem="xEd-hD-zgQ" firstAttribute="leading" secondItem="VPD-Ih-Hp2" secondAttribute="leading" constant="8.5299999999999994" id="1b7-Mp-5mi"/>
                             <constraint firstItem="xEd-hD-zgQ" firstAttribute="top" secondItem="Y2E-U5-gyd" secondAttribute="bottom" constant="8" id="5Ct-mT-3DT"/>
                             <constraint firstItem="FcK-SJ-u5h" firstAttribute="top" secondItem="VPD-Ih-Hp2" secondAttribute="top" constant="33" id="6x4-Ee-0wx"/>
+                            <constraint firstAttribute="bottom" secondItem="Q5X-gg-ws3" secondAttribute="bottom" id="APK-bd-8o5"/>
                             <constraint firstItem="AU2-Zc-qI9" firstAttribute="centerX" secondItem="90K-o7-Cuk" secondAttribute="centerX" id="CSu-k7-Vqf"/>
+                            <constraint firstItem="Q5X-gg-ws3" firstAttribute="leading" secondItem="VPD-Ih-Hp2" secondAttribute="leading" id="E4g-QU-70m"/>
                             <constraint firstItem="Y2E-U5-gyd" firstAttribute="top" secondItem="AU2-Zc-qI9" secondAttribute="bottom" constant="8" id="FMp-7x-45R"/>
                             <constraint firstItem="AU2-Zc-qI9" firstAttribute="top" secondItem="FcK-SJ-u5h" secondAttribute="bottom" constant="30" id="J2Q-MX-bkb"/>
+                            <constraint firstItem="VPD-Ih-Hp2" firstAttribute="trailing" secondItem="Q5X-gg-ws3" secondAttribute="trailing" id="Kh8-FL-uXa"/>
                             <constraint firstItem="VPD-Ih-Hp2" firstAttribute="trailing" secondItem="xEd-hD-zgQ" secondAttribute="trailing" constant="11.470000000000001" id="Lsv-gy-Uf0"/>
+                            <constraint firstItem="2Xt-iL-zfb" firstAttribute="top" secondItem="VPD-Ih-Hp2" secondAttribute="top" id="Mr9-sG-nfC"/>
                             <constraint firstItem="VPD-Ih-Hp2" firstAttribute="trailing" secondItem="Pf8-EL-19H" secondAttribute="trailing" constant="20" id="ORJ-ql-cHE"/>
                             <constraint firstItem="Mps-VZ-pnA" firstAttribute="centerY" secondItem="2VZ-0p-VF2" secondAttribute="centerY" id="OfM-qJ-Oj1"/>
                             <constraint firstItem="VPD-Ih-Hp2" firstAttribute="trailing" secondItem="FcK-SJ-u5h" secondAttribute="trailing" constant="68" id="TzM-oo-CsF"/>
@@ -1071,12 +1107,13 @@
                             <constraint firstItem="FcK-SJ-u5h" firstAttribute="leading" secondItem="VPD-Ih-Hp2" secondAttribute="leading" constant="66" id="gcg-I8-SET"/>
                             <constraint firstItem="Mps-VZ-pnA" firstAttribute="leading" secondItem="VPD-Ih-Hp2" secondAttribute="leading" constant="20" id="gof-qC-zne"/>
                             <constraint firstItem="Y2E-U5-gyd" firstAttribute="centerX" secondItem="90K-o7-Cuk" secondAttribute="centerX" id="kMW-ep-GiW"/>
+                            <constraint firstItem="Q5X-gg-ws3" firstAttribute="top" secondItem="2Xt-iL-zfb" secondAttribute="bottom" id="n2x-Fl-Lbf"/>
                             <constraint firstItem="2VZ-0p-VF2" firstAttribute="leading" secondItem="VPD-Ih-Hp2" secondAttribute="leading" constant="30" id="qtt-oS-UaS"/>
                             <constraint firstItem="2VZ-0p-VF2" firstAttribute="top" secondItem="FcK-SJ-u5h" secondAttribute="bottom" constant="34" id="shK-hQ-QlF"/>
                             <constraint firstItem="VJr-SK-srO" firstAttribute="centerY" secondItem="2VZ-0p-VF2" secondAttribute="centerY" id="uLb-1q-EPZ"/>
+                            <constraint firstItem="VPD-Ih-Hp2" firstAttribute="trailing" secondItem="2Xt-iL-zfb" secondAttribute="trailing" constant="10" id="z8c-Ao-nKe"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="414" height="2200"/>
                     <connections>
                         <outlet property="curedCasesGraphView" destination="EvN-8k-k0t" id="CBv-3o-hiC"/>
                         <outlet property="curedCasesScrollView" destination="mBi-rB-62H" id="QaP-lV-cuV"/>
@@ -1099,6 +1136,8 @@
                         <outlet property="totalCasesScrollViewContainerView" destination="MxQ-b6-BDV" id="XJ0-Yw-y9N"/>
                         <outlet property="totalCasesXaxisStackView" destination="VWv-Y9-mfe" id="s7B-Us-ZxA"/>
                         <outlet property="totalCasesYAxisStackView" destination="HAT-oz-MLs" id="fms-kL-m89"/>
+                        <outlet property="vwGoogleMap" destination="Q5X-gg-ws3" id="5bd-LK-Ji0"/>
+                        <outlet property="vwMap" destination="hr2-Id-wUD" id="CTC-OD-6aN"/>
                         <outlet property="worldCasesScrollView" destination="DFa-Ef-r7Z" id="foK-4v-8my"/>
                         <outlet property="worldCasesScrollViewContainerView" destination="JAK-eR-L2F" id="QCA-iY-sG7"/>
                         <outlet property="worldCasesXAxisRangeStackView" destination="RhB-hk-rbn" id="GOv-hA-fLw"/>
@@ -1108,7 +1147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I08-4j-bCu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2181.1594202898555" y="509.59821428571428"/>
+            <point key="canvasLocation" x="2247.826086956522" y="79.6875"/>
         </scene>
         <!--Covid Details View Controller-->
         <scene sceneID="39A-BS-ZfJ">
