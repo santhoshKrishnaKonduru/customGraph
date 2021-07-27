@@ -11,23 +11,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomMarkerView" customModule="GraphPOC" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="172" height="144"/>
+            <rect key="frame" x="0.0" y="0.0" width="172" height="184"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="66T-hZ-Fwb">
-                    <rect key="frame" x="10" y="0.0" width="152" height="144"/>
+                    <rect key="frame" x="10" y="8" width="152" height="168"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gpw-SO-eDo">
-                            <rect key="frame" x="0.0" y="0.0" width="152" height="72.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="152" height="51.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Country name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eF-gg-nu7">
-                                    <rect key="frame" x="0.0" y="0.0" width="152" height="54"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="152" height="33"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Country name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCU-Y8-8wL">
-                                    <rect key="frame" x="0.0" y="59" width="152" height="13.5"/>
+                                    <rect key="frame" x="0.0" y="38" width="152" height="13.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yBq-fT-7wi">
-                            <rect key="frame" x="0.0" y="87.5" width="152" height="56.5"/>
+                            <rect key="frame" x="0.0" y="66.5" width="152" height="56.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Country name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCa-vC-lZq">
                                     <rect key="frame" x="0.0" y="0.0" width="152" height="13.5"/>
@@ -57,6 +57,31 @@
                                 </label>
                             </subviews>
                         </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ded-9x-09A">
+                            <rect key="frame" x="0.0" y="138" width="152" height="30"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ct9-J4-OlN">
+                                    <rect key="frame" x="53" y="0.0" width="46" height="30"/>
+                                    <color key="backgroundColor" red="0.025605285540000002" green="0.026134390380000001" blue="0.1764828265" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="oe3-6c-MJI"/>
+                                        <constraint firstAttribute="width" constant="46" id="sug-Qh-D1n"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <state key="normal" title="Add">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="ct9-J4-OlN" firstAttribute="centerX" secondItem="ded-9x-09A" secondAttribute="centerX" id="NOj-fd-a3b"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ct9-J4-OlN" secondAttribute="trailing" constant="10" id="NvY-MF-GJF"/>
+                                <constraint firstItem="ct9-J4-OlN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ded-9x-09A" secondAttribute="leading" constant="10" id="QQF-Wv-6zH"/>
+                                <constraint firstItem="ct9-J4-OlN" firstAttribute="top" secondItem="ded-9x-09A" secondAttribute="top" id="Y0w-nL-0RA"/>
+                                <constraint firstAttribute="bottom" secondItem="ct9-J4-OlN" secondAttribute="bottom" id="aqz-0I-unL"/>
+                            </constraints>
+                        </view>
                     </subviews>
                 </stackView>
             </subviews>
@@ -64,19 +89,20 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="66T-hZ-Fwb" secondAttribute="trailing" constant="10" id="LiN-MO-UYj"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="66T-hZ-Fwb" secondAttribute="bottom" id="eYX-aR-7nA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="66T-hZ-Fwb" secondAttribute="bottom" constant="8" id="eYX-aR-7nA"/>
                 <constraint firstItem="66T-hZ-Fwb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="iGz-ME-6cs"/>
-                <constraint firstItem="66T-hZ-Fwb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ujm-lI-vCO"/>
+                <constraint firstItem="66T-hZ-Fwb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ujm-lI-vCO"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btnAddIntoList" destination="ct9-J4-OlN" id="pUb-P2-jX0"/>
                 <outlet property="lblCountryName" destination="1eF-gg-nu7" id="Dpp-bc-4vT"/>
                 <outlet property="lblFlag" destination="tCU-Y8-8wL" id="i0C-BU-GgV"/>
                 <outlet property="lblTotalCase" destination="uCa-vC-lZq" id="kXg-EH-xqy"/>
                 <outlet property="lblTotalDeath" destination="iZw-od-kfJ" id="WaG-lV-e92"/>
                 <outlet property="lblTotalRecover" destination="KUy-R8-EJh" id="pNb-Nu-fVs"/>
             </connections>
-            <point key="canvasLocation" x="36.231884057971016" y="-109.15178571428571"/>
+            <point key="canvasLocation" x="36.231884057971016" y="-95.758928571428569"/>
         </view>
     </objects>
     <resources>

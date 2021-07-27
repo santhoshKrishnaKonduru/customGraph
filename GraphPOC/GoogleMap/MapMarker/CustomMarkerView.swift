@@ -14,6 +14,6 @@ class CustomMarkerView: UIView {
     @IBOutlet weak var lblTotalCase: UILabel!
     @IBOutlet weak var lblTotalDeath: UILabel!
     @IBOutlet weak var lblTotalRecover: UILabel!
+    @IBOutlet weak var btnAddIntoList: UIButton!
 
- 
 }
