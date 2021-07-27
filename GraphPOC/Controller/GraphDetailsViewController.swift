@@ -410,17 +410,9 @@ extension GraphDetailsViewController: GMSMapViewDelegate{
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-       let data = marker.userData as? FullData
-        let nib = UINib(nibName: "CustomMarkerView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CustomMarkerView
-        nib.lblCountryName.text = data?.countryName
-        print(flag(from: data?.country?.ISO2 ?? ""))
-        nib.lblTotalCase.text = "Total Cases   \(data?.TotalConfirmed ?? 0.0)"
-        nib.lblFlag.text = flag(from: data?.country?.ISO2 ?? "")
-        nib.lblTotalDeath.text = "Deaths   \(data?.TotalDeaths ?? 0.0)"
-        nib.lblTotalRecover.text = "Recovers   \(data?.TotalRecover ?? 0.0)"
-        nib.layer.cornerRadius = 8
-        return nib
+        return self.setMarkerView(marker)
     }
+    
     
     func flag(from country:String) -> String {
         let base : UInt32 = 127397
@@ -430,6 +422,19 @@ extension GraphDetailsViewController: GMSMapViewDelegate{
         }
         return s
     }
+    
+    func setMarkerView(_ marker: GMSMarker) -> UIView{
+        let data = marker.userData as? FullData
+         let nib = UINib(nibName: "CustomMarkerView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CustomMarkerView
+         nib.lblCountryName.text = data?.countryName
+         nib.lblTotalCase.text = "Total Cases   \(data?.TotalConfirmed ?? 0.0)"
+         nib.lblFlag.text = flag(from: data?.country?.ISO2 ?? "")
+         nib.lblTotalDeath.text = "Deaths   \(data?.TotalDeaths ?? 0.0)"
+         nib.lblTotalRecover.text = "Recovers   \(data?.TotalRecover ?? 0.0)"
+         nib.layer.cornerRadius = 8
+        return nib
+    }
+    
 }
 
 // building world confirm cases view
