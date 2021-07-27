@@ -31,7 +31,7 @@ extension Notification.Name {
 
 //MARK:APIKeys
 struct Keys{
-   
+   static let googleApiKey = "AIzaSyBzwTPYcj4nwv-JY97_dB6N_kRDg0_tO6U"
 }
 
 struct UserDefaultKeys{

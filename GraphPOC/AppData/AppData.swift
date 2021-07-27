@@ -86,7 +86,7 @@ extension AppData {
             completion?()
             return
         }
-        let totaldata = FullData(country: nil, TotalConfirmed: nil, covidData: nil, graphColor: nil)
+        let totaldata = FullData()//FullData(country: nil, TotalConfirmed: nil, covidData: nil, graphColor: nil)
         totaldata.country = country
         
         covidData = covidData?.filterDuplicates(includeElement: { (session1, session2) -> Bool in
@@ -108,12 +108,15 @@ extension AppData {
             if let nextDate = covidData?[safe: index + 1] {
                 
                 if nextDate.Confirmed ?? 0 > 0 {
-                    print("some data")
+//                    print("some data")
                 }
                 
                 nextDate.currentConfirmed = (nextDate.Confirmed ?? 0) - (currentDate.Confirmed ?? 0)
                 nextDate.currentRecovered = (nextDate.Recovered ?? 0) - (currentDate.Recovered ?? 0)
                 nextDate.currentDeaths = (nextDate.Deaths ?? 0) - (currentDate.Deaths ?? 0)
+                nextDate.countryName = currentDate.countryName
+                nextDate.Lat = currentDate.Lat
+                nextDate.Lon = currentDate.Lon
             }
         }
         totaldata.covidData = covidData
@@ -175,6 +178,11 @@ extension AppData {
                 return range.contains(date.startDateOfTheDay())
             })
             tempData.TotalConfirmed = (filterdData.last?.Confirmed ?? 0) - (covidData.first?.Confirmed ?? 0)
+            tempData.TotalDeaths = (filterdData.last?.Deaths ?? 0 - (covidData.first?.Deaths)! )
+            tempData.TotalRecover = (filterdData.last?.Recovered ?? 0 - (covidData.first?.Recovered)! )
+            tempData.countryName = filterdData.last?.countryName
+            tempData.lat = filterdData.last?.Lat
+            tempData.long = filterdData.last?.Lon
             tempData.covidData = filterdData
             tempCovidData.append(tempData)
         }

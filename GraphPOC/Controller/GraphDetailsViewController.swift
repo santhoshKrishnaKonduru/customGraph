@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import GoogleMaps
 
 
 enum GraphType: String {
@@ -21,6 +22,7 @@ enum SleepTrrendState: String {
 
 class GraphDetailsViewController: UIViewController {
     
+    //MARK: Outlets
     @IBOutlet weak var pagerView: UIView!
     
     @IBOutlet weak var slidingView: UIView!
@@ -77,7 +79,10 @@ class GraphDetailsViewController: UIViewController {
     
     @IBOutlet weak var deathCasesXAxisStackView: UIStackView!
     
+    @IBOutlet weak var vwMap: GMSMapView!
+    @IBOutlet weak var vwGoogleMap: UIView!
     
+    //MARK: Variables
     var currentState: SleepTrrendState = .week
     var currentDate = Date()
     var currentDatesInGraph = [Date]()
@@ -90,9 +95,11 @@ class GraphDetailsViewController: UIViewController {
     var flageViews = [UIView]()
     var appData = AppData.sharedInstance
     
+    //MARK: Default Function
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.setMap()
         // Do any additional setup after loading the view.
     }
     
@@ -101,16 +108,6 @@ class GraphDetailsViewController: UIViewController {
         super.viewDidAppear(animated)
         
         setCalendarComponentsBasedOn(state: currentState, date: currentDate)
-        
-    }
-    
-    func setup() {
-        
-        worldCasesScrollView.indicatorStyle = .white
-        totalCasesScrollView.indicatorStyle = .white
-        deathCasesScrollView.indicatorStyle = .white
-        
-        totalCovidData = appData.getCovidDataFromSelectedDateRange(date: currentDate, dateType: currentState)
         
     }
     
@@ -151,6 +148,15 @@ class GraphDetailsViewController: UIViewController {
     }
     
     
+    func setup() {
+        
+        worldCasesScrollView.indicatorStyle = .white
+        totalCasesScrollView.indicatorStyle = .white
+        deathCasesScrollView.indicatorStyle = .white
+        
+        totalCovidData = appData.getCovidDataFromSelectedDateRange(date: currentDate, dateType: currentState)
+        
+    }
     
     func showSleepTerndsBasedOn(state: SleepTrrendState) {
         currentState = state
@@ -179,8 +185,6 @@ class GraphDetailsViewController: UIViewController {
             dateLabel.text = dateString
         }else {
             currentDatesInGraph = currentDate.getAllDays()
-            //            let startOfTheMonth = currentDatesInGraph.first!
-            //            let endOfTheMonth = currentDatesInGraph.last!
             dateLabel.text = "\(date.toMonthString())\n\(date.toYearString())"
         }
         
@@ -230,7 +234,7 @@ class GraphDetailsViewController: UIViewController {
         
         let confirmCases = totalCovidData.compactMap({$0.TotalConfirmed})
         // setting up world graph
-        let worldYPositionRanges = getYAxisRange(for: confirmCases.max()!)
+        let worldYPositionRanges = getYAxisRange(for: confirmCases.max()!)// crash when server getting time
         
         let worldXAxisValues: [String] = totalCovidData.compactMap({$0.country?.ISO2!})
         let worldYAxisValues: [String] = worldYPositionRanges.compactMap({String($0)})
@@ -319,7 +323,16 @@ class GraphDetailsViewController: UIViewController {
         return yAxisRange.reversed()
     }
     
-    
+    //MARK: Actions
+    @IBAction func btnOpenMapAction(_ sender: UIButton){
+        sender.isSelected.toggle()
+        
+        if sender.isSelected{
+            self.vwGoogleMap.isHidden = false
+        }else{
+            self.vwGoogleMap.isHidden = true
+        }
+    }
     
     @IBAction func didTapOnWeek(_ sender: Any) {
         
@@ -373,6 +386,54 @@ class GraphDetailsViewController: UIViewController {
         
     }
     
+    
+}
+
+
+//MARK: Se google map
+extension GraphDetailsViewController: GMSMapViewDelegate{
+    func setMap(){
+        //self.vwMap.delegate = self
+        self.vwMap.animate(toZoom: 0)
+        print("show map total countrys data is",appData.filterdCountries!.count)
+        for data in totalCovidData {
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude:
+                                                    data.lat?.toDouble() ?? 0.0, longitude: data.long?.toDouble() ?? 0.0)
+            marker.title = data.countryName
+            marker.snippet = String(format: "%.1f", data.TotalConfirmed!)
+            marker.userData = data
+            
+            marker.map = self.vwMap
+            print ("Your GMSMarker")
+        }
+    }
+    
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        return self.setMarkerView(marker)
+    }
+    
+    
+    func flag(from country:String) -> String {
+        let base : UInt32 = 127397
+        var s = ""
+        for v in country.uppercased().unicodeScalars {
+            s.unicodeScalars.append(UnicodeScalar(base + v.value)!)
+        }
+        return s
+    }
+    
+    func setMarkerView(_ marker: GMSMarker) -> UIView{
+        let data = marker.userData as? FullData
+         let nib = UINib(nibName: "CustomMarkerView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CustomMarkerView
+         nib.lblCountryName.text = data?.countryName
+         nib.lblTotalCase.text = "Total Cases   \(data?.TotalConfirmed ?? 0.0)"
+         nib.lblFlag.text = flag(from: data?.country?.ISO2 ?? "")
+         nib.lblTotalDeath.text = "Deaths   \(data?.TotalDeaths ?? 0.0)"
+         nib.lblTotalRecover.text = "Recovers   \(data?.TotalRecover ?? 0.0)"
+         nib.layer.cornerRadius = 8
+        return nib
+    }
     
 }
 
@@ -792,5 +853,19 @@ extension GraphDetailsViewController {
             
         }
         
+    }
+}
+
+
+extension String {
+    func toDouble() -> Double? {
+        return NumberFormatter().number(from: self)?.doubleValue
+    }
+}
+
+
+extension UIView {
+    class func fromNib<T: UIView>() -> T {
+        return Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
     }
 }

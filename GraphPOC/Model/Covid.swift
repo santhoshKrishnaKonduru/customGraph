@@ -12,8 +12,8 @@ class Covid: NSObject,Mappable {
     
     var countryName: String?
     var CountryCode: String?
-    var Lat: Double?
-    var Lon: Double?
+    var Lat: String?
+    var Lon: String?
     var Confirmed: Double?
     var Deaths: Double?
     var Recovered: Double?
@@ -72,31 +72,42 @@ class FullData: NSObject, NSCopying {
     
     var country: Country?
     var TotalConfirmed: Double?
+    var countryName: String?
     var covidData: [Covid]?
+    var TotalDeaths: Double?
+    var TotalRecover: Double?
     var graphColor: UIColor?
     var lineLayers: [CAShapeLayer]?
     var roundedViews: [UIView]?
-    
     var barViews: [UIView]?
     var defaultBarViews: [UIView]?
     var flagViews: [UIImageView]?
-    
+    var lat: String?
+    var long: String?
     var recoverdRoundViews: [UIView]?
     var recoverdLineLayers: [CAShapeLayer]?
     
     var deathsRoundViews: [UIView]?
     var deathsLineLayers: [CAShapeLayer]?
     
+    override init(){
+        
+    }
     
-    init(country: Country?, TotalConfirmed: Double?, covidData: [Covid]?, graphColor: UIColor?) {
+    init(country: Country?, TotalConfirmed: Double?, covidData: [Covid]?, graphColor: UIColor?, countryName:String?, TotalRecover:Double?, TotalDeaths:Double?, lat: String?, long: String?) {
         self.country = country
         self.TotalConfirmed = TotalConfirmed
         self.covidData = covidData
         self.graphColor = graphColor
+        self.countryName = countryName
+        self.TotalRecover = TotalRecover
+        self.TotalDeaths = TotalDeaths
+        self.lat = lat
+        self.long = long
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-       let copy =  FullData(country: country, TotalConfirmed: TotalConfirmed, covidData: covidData, graphColor: graphColor)
+        let copy =  FullData(country: country, TotalConfirmed: TotalConfirmed, covidData: covidData, graphColor: graphColor, countryName: countryName, TotalRecover: TotalRecover, TotalDeaths: TotalDeaths, lat: lat, long: long)
        return copy
     }
 }

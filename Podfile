@@ -16,6 +16,7 @@ target 'GraphPOC' do
   pod 'NVActivityIndicatorView'
   pod 'Alamofire', '~> 5.1'
   pod 'ObjectMapper'
+  pod 'GoogleMaps'
   # Pods for GraphPOC
 
 end

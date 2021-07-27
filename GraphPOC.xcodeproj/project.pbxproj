@@ -115,6 +115,8 @@
 		6786FD222604B5EA002758B3 /* Covid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6786FD212604B5EA002758B3 /* Covid.swift */; };
 		6786FD2626050E2F002758B3 /* GraphDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6786FD2526050E2F002758B3 /* GraphDetailsViewController.swift */; };
 		6786FD2A2605112A002758B3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6786FD292605112A002758B3 /* LaunchViewController.swift */; };
+		95FE2D8926AEE26A00BA2D2C /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FE2D8826AEE26A00BA2D2C /* CustomMarkerView.swift */; };
+		95FE2D8B26AEE27700BA2D2C /* CustomMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FE2D8A26AEE27700BA2D2C /* CustomMarkerView.xib */; };
 		AF4E49F300B1A939E99935D6 /* Pods_GraphPOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBE8F989F686D3F96F5CC0A /* Pods_GraphPOC.framework */; };
 /* End PBXBuildFile section */
 
@@ -233,6 +235,8 @@
 		6786FD2526050E2F002758B3 /* GraphDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDetailsViewController.swift; sourceTree = "<group>"; };
 		6786FD292605112A002758B3 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		8BBE8F989F686D3F96F5CC0A /* Pods_GraphPOC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GraphPOC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95FE2D8826AEE26A00BA2D2C /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
+		95FE2D8A26AEE27700BA2D2C /* CustomMarkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomMarkerView.xib; sourceTree = "<group>"; };
 		A1FD500131CFA6BE1CCCE4EE /* Pods-GraphPOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphPOC.release.xcconfig"; path = "Target Support Files/Pods-GraphPOC/Pods-GraphPOC.release.xcconfig"; sourceTree = "<group>"; };
 		B5FE3B76A3556194F50EAD19 /* Pods-GraphPOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphPOC.debug.xcconfig"; path = "Target Support Files/Pods-GraphPOC/Pods-GraphPOC.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -279,6 +283,7 @@
 		6760C0EC25FF12AA009A97BB /* GraphPOC */ = {
 			isa = PBXGroup;
 			children = (
+				95FE2D8726AEE22600BA2D2C /* MapMarker */,
 				6786FD2426050DD1002758B3 /* Controller */,
 				6786FC2E26045FD1002758B3 /* APIWrapper */,
 				6786FC7626045FD1002758B3 /* AppData */,
@@ -595,6 +600,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		95FE2D8726AEE22600BA2D2C /* MapMarker */ = {
+			isa = PBXGroup;
+			children = (
+				95FE2D8826AEE26A00BA2D2C /* CustomMarkerView.swift */,
+				95FE2D8A26AEE27700BA2D2C /* CustomMarkerView.xib */,
+			);
+			path = MapMarker;
+			sourceTree = "<group>";
+		};
 		D6EB7FC3AD8330B3B4E1BF12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +629,7 @@
 				6760C0E725FF12AA009A97BB /* Frameworks */,
 				6760C0E825FF12AA009A97BB /* Resources */,
 				96804C29011469DB3FECA2FE /* [CP] Embed Pods Frameworks */,
+				5F8525C3EC1912716E1C6244 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -662,6 +677,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95FE2D8B26AEE27700BA2D2C /* CustomMarkerView.xib in Resources */,
 				6786FCBA26045FD1002758B3 /* Montserrat-Light.ttf in Resources */,
 				6786FCB026045FD1002758B3 /* BungeeShade-Regular.ttf in Resources */,
 				6786FCBC26045FD1002758B3 /* Montserrat-Thin.ttf in Resources */,
@@ -731,6 +747,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F8525C3EC1912716E1C6244 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GraphPOC/Pods-GraphPOC-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GraphPOC/Pods-GraphPOC-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GraphPOC/Pods-GraphPOC-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		96804C29011469DB3FECA2FE /* [CP] Embed Pods Frameworks */ = {
@@ -816,6 +849,7 @@
 				67595686260637BA0036EACC /* DispatchQueue+Generics.swift in Sources */,
 				6786FC9626045FD1002758B3 /* App_Utility.swift in Sources */,
 				6786FCCB26045FD1002758B3 /* UIFont+Generics.swift in Sources */,
+				95FE2D8926AEE26A00BA2D2C /* CustomMarkerView.swift in Sources */,
 				67595683260623D90036EACC /* GraphUtility.swift in Sources */,
 				6786FCDA26045FD1002758B3 /* AlamofireAPIResponse.swift in Sources */,
 				6759568C260699520036EACC /* CovidDetailsViewController.swift in Sources */,
