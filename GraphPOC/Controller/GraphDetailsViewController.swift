@@ -239,12 +239,9 @@ class GraphDetailsViewController: UIViewController {
             currentDatesInGraph = currentDate.getAllDays()
         }
         
-        
-        
+    
         let confirmCases = totalCovidData.compactMap({$0.TotalConfirmed})
-        // setting up world graph
         let worldYPositionRanges = getYAxisRange(for: confirmCases.max()!)// crash when server getting time
-        
         let worldXAxisValues: [String] = totalCovidData.compactMap({$0.country?.ISO2!})
         let worldYAxisValues: [String] = worldYPositionRanges.compactMap({String($0)})
         loadGraphInitialAxisSetup(xAxisStackView: worldCasesXAxisRangeStackView, yAxisStackView: worldCasesYAxisRangeStackView, graphType: .world, xAxisValues: worldXAxisValues, yAxisValues: worldYAxisValues, graphView: worldWideConfirmCasesView)
