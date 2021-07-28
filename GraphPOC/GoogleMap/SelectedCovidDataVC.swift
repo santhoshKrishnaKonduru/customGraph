@@ -7,11 +7,20 @@
 
 import UIKit
 
-class SelectedCovidDataVC: BaseViewController {
+class SelectedCovidDataVC: UIViewController {
     
     //MARK: Variables
     @IBOutlet weak var tblCovid: UITableView!
+    @IBOutlet weak var lblNoData: UILabel!
     
+    //MARK: Variables
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
     var arrCovidData = [CovidData](){
         didSet{
             DispatchQueue.main.async {
@@ -23,21 +32,36 @@ class SelectedCovidDataVC: BaseViewController {
     //MARK: default function
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+        UIViewController.attemptRotationToDeviceOrientation()
+        self.tblCovid.tableFooterView = UIView()
         self.arrCovidData = DataBaseHelper.sharedInstance.fetchCovidData()
-        // Do any additional setup after loading the view.
+        if self.arrCovidData.count == 0{
+            self.lblNoData.text = "No data found"
+            self.lblNoData.isHidden = false
+        }else{
+            self.lblNoData.text = ""
+            self.lblNoData.isHidden = true
+        }
     }
 
+    @IBAction func btnBackAction(_ sender: UIButton){
+        self.dismiss(animated: true)
+    }
+   
+    
 
 }
-
+//MARK: UITableViewDelegate, UITableViewDataSource
 extension SelectedCovidDataVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrCovidData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tblCovid.dequeueReusableCell(withIdentifier: "", for: indexPath)
+        let cell = tblCovid.dequeueReusableCell(withIdentifier: "CovidTableViewCell", for: indexPath) as! CovidTableViewCell
+        cell.VC = self
+        cell.coviData = self.arrCovidData[indexPath.row]
         return cell
     }
      
