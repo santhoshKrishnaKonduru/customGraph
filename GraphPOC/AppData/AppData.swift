@@ -43,9 +43,12 @@ class AppData: NSObject {
 
 extension AppData {
     
+    func refreshCovidData(completion: (() -> ())? = nil) {
+        totalCovidData.removeAll() // resetting data
+        self.getWorldCovidData(completion: completion)
+    }
     
     func getWorldCovidData(completion: (() -> ())? = nil) {
-        totalCovidData.removeAll() // resetting data
         if covidDataCompletionBlock == nil {
             covidDataCompletionBlock = completion
         }
