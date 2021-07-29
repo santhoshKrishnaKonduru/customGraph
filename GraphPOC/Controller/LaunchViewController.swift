@@ -14,14 +14,27 @@ class LaunchViewController: UIViewController {
     
     var apiWrapper = AlamofireAPIWrapper.sharedInstance
     var appData = AppData.sharedInstance
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         getAllCountries()
-        // Do any additional setup after loading the view.
+        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+        UIViewController.attemptRotationToDeviceOrientation()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+        UIViewController.attemptRotationToDeviceOrientation()
+    }
     
     func getCountryImages() {
         activityIndicator.startAnimating()

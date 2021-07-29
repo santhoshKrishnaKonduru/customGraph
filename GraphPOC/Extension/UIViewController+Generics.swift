@@ -26,6 +26,15 @@ class CustomBannerColors: BannerColorsProtocol {
 }
 
 extension UIViewController {
+    func flag(from country:String) -> String {
+        let base : UInt32 = 127397
+        var s = ""
+        for v in country.uppercased().unicodeScalars {
+            s.unicodeScalars.append(UnicodeScalar(base + v.value)!)
+        }
+        return s
+    }
+    
     func showLocationNotAllowedAlert(){
         var msg:String = ""
         showAlert(target: self, message: msg, title: "No Location Access", buttonTitle: "Got it!", buttonTitle2: "Settings", completionBlock: {
@@ -56,6 +65,15 @@ extension UIViewController {
         let message = "Network Error\n\(Constants.Error.networkMsg)"
         showSlideNotification(notificationText: message)
     }
+    
+//    func flag(from country:String) -> String {
+//        let base : UInt32 = 127397
+//        var s = ""
+//        for v in country.uppercased().unicodeScalars {
+//            s.unicodeScalars.append(UnicodeScalar(base + v.value)!)
+//        }
+//        return s
+//    }
     
     func showErrorAlertWithMsg(msg:String){
         showSliderAlert(message: msg, title: "Oops...", buttonTitle: "OK")
