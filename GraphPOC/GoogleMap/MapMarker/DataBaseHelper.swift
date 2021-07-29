@@ -15,7 +15,6 @@ class DataBaseHelper {
     
     let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
-    
     func saveData(_ data: FullData, handler: (String) -> Void){
         let selectedCovidData = NSEntityDescription.insertNewObject(forEntityName: "CovidData", into: context!) as! CovidData
         selectedCovidData.countryName = data.countryName

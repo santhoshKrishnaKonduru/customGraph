@@ -13,6 +13,7 @@ import UIKit
 
 extension UIView{
     
+
     func flag(from country:String) -> String {
         let base : UInt32 = 127397
         var s = ""
@@ -21,6 +22,18 @@ extension UIView{
         }
         return s
     }
+
+    func setCornerForButton(_ radius: CGFloat) {
+        return self.layer.cornerRadius = radius
+    }
+    
+    func hideWithAnimation(hidden: Bool) {
+            UIView.transition(with: self, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                self.isHidden = hidden
+            })
+        }
+    
+
     func addBGImage(image:UIImage){
         UIGraphicsBeginImageContext(self.frame.size)
         image.draw(in: bounds)
@@ -119,15 +132,6 @@ extension UIView{
         layer.mask = mask
     }
     
-    func setCornerForButton(_ radius: CGFloat) {
-        return self.layer.cornerRadius = radius
-    }
-    
-    func hideWithAnimation(hidden: Bool) {
-            UIView.transition(with: self, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                self.isHidden = hidden
-            })
-        }
 }
 
 extension UITableView {

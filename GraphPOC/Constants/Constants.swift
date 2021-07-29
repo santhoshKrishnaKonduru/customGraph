@@ -158,7 +158,6 @@ enum Fields: Int {
     }
 }
 
-
 class getCountriesCordinates {
     static var sharedInstanse = getCountriesCordinates()
     var dic: [String: CLLocationCoordinate2D] = ["AD": CLLocationCoordinate2D(latitude: 42.546245, longitude: 1.601554),

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol CustomTextFieldDelegate:class {
+@objc protocol CustomTextFieldDelegate:AnyObject {
     @objc optional func customTextFieldShouldReturn(customView: CustomTextField) -> Bool
     @objc optional func customTextFieldDidBeginEditing(customView: CustomTextField)
     @objc optional func customTextFieldShouldBeginEditing(customView: CustomTextField) -> Bool

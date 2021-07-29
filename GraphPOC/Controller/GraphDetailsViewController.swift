@@ -78,7 +78,7 @@ class GraphDetailsViewController: UIViewController {
     @IBOutlet weak var deathCasesScrollViewContainerView: UIView!
     
     @IBOutlet weak var deathCasesXAxisStackView: UIStackView!
-    
+
     //MARK: Variables
     var currentState: SleepTrrendState = .week
     var currentDate = Date()
@@ -238,12 +238,9 @@ class GraphDetailsViewController: UIViewController {
             currentDatesInGraph = currentDate.getAllDays()
         }
         
-        
-        
+    
         let confirmCases = totalCovidData.compactMap({$0.TotalConfirmed})
-        // setting up world graph
         let worldYPositionRanges = getYAxisRange(for: confirmCases.max()!)// crash when server getting time
-        
         let worldXAxisValues: [String] = totalCovidData.compactMap({$0.country?.ISO2!})
         let worldYAxisValues: [String] = worldYPositionRanges.compactMap({String($0)})
         loadGraphInitialAxisSetup(xAxisStackView: worldCasesXAxisRangeStackView, yAxisStackView: worldCasesYAxisRangeStackView, graphType: .world, xAxisValues: worldXAxisValues, yAxisValues: worldYAxisValues, graphView: worldWideConfirmCasesView)
@@ -394,7 +391,6 @@ class GraphDetailsViewController: UIViewController {
     
     
 }
-
 
 // building world confirm cases view
 extension GraphDetailsViewController {
