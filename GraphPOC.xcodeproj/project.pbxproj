@@ -112,6 +112,7 @@
 		6786FD222604B5EA002758B3 /* Covid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6786FD212604B5EA002758B3 /* Covid.swift */; };
 		6786FD2626050E2F002758B3 /* GraphDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6786FD2526050E2F002758B3 /* GraphDetailsViewController.swift */; };
 		6786FD2A2605112A002758B3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6786FD292605112A002758B3 /* LaunchViewController.swift */; };
+		951953ED26B2DBB600312B64 /* Protocolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951953EC26B2DBB600312B64 /* Protocolo.swift */; };
 		95BA0F9026B27068008EBD0B /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA0F8B26B27068008EBD0B /* CustomMarkerView.swift */; };
 		95BA0F9126B27068008EBD0B /* DataBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA0F8C26B27068008EBD0B /* DataBaseHelper.swift */; };
 		95BA0F9226B27068008EBD0B /* SelectedCovidDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA0F8D26B27068008EBD0B /* SelectedCovidDataVC.swift */; };
@@ -236,6 +237,7 @@
 		6786FD2526050E2F002758B3 /* GraphDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDetailsViewController.swift; sourceTree = "<group>"; };
 		6786FD292605112A002758B3 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		8BBE8F989F686D3F96F5CC0A /* Pods_GraphPOC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GraphPOC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		951953EC26B2DBB600312B64 /* Protocolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocolo.swift; sourceTree = "<group>"; };
 		95BA0F8B26B27068008EBD0B /* CustomMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		95BA0F8C26B27068008EBD0B /* DataBaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseHelper.swift; sourceTree = "<group>"; };
 		95BA0F8D26B27068008EBD0B /* SelectedCovidDataVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedCovidDataVC.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 		6760C0EC25FF12AA009A97BB /* GraphPOC */ = {
 			isa = PBXGroup;
 			children = (
+				951953EB26B2DB8D00312B64 /* Protocol */,
 				95BA0FA426B2751C008EBD0B /* Cell */,
 				95BA0FA126B27476008EBD0B /* CoreDataModal.xcdatamodeld */,
 				95BA0F9926B270E9008EBD0B /* MainFile */,
@@ -608,6 +611,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		951953EB26B2DB8D00312B64 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				951953EC26B2DBB600312B64 /* Protocolo.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		95BA0F8826B27068008EBD0B /* GoogleMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +884,7 @@
 				6786FCD926045FD1002758B3 /* PhotoURL.swift in Sources */,
 				6786FC8826045FD1002758B3 /* Toast.swift in Sources */,
 				6786FCCD26045FD1002758B3 /* UIImage+Generics.swift in Sources */,
+				951953ED26B2DBB600312B64 /* Protocolo.swift in Sources */,
 				6786FCD526045FD1002758B3 /* LocationManager.swift in Sources */,
 				6786FCC826045FD1002758B3 /* UIViewController+Generics.swift in Sources */,
 				6786FCA326045FD1002758B3 /* CustomGalleryCell.swift in Sources */,

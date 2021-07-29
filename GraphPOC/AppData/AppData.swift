@@ -71,7 +71,7 @@ extension AppData {
         let monthDates = Date().getAllDays()
         let startDate = monthDates.first!.startDateOfTheDay().convertDateToTZFormat()
         let endDate = monthDates.last!.startDateOfTheDay().convertDateToTZFormat()
-        print("getting covid data for", country.name, "and in range of", "\(monthDates.first!.startDateOfTheDay().convertToDate()) - \(monthDates.last!.startDateOfTheDay().convertToDate())")
+      //  print("getting covid data for", country.name, "and in range of", "\(monthDates.first!.startDateOfTheDay().convertToDate()) - \(monthDates.last!.startDateOfTheDay().convertToDate())")
         guard let slug = country.slug else {
             completion?(nil)
             return

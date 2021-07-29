@@ -20,8 +20,8 @@ enum SleepTrrendState: String {
 }
 
 
-class GraphDetailsViewController: UIViewController {
-    
+class GraphDetailsViewController: UIViewController, UpdateProtocol {
+   
     //MARK: Outlets
     @IBOutlet weak var pagerView: UIView!
     
@@ -332,6 +332,9 @@ class GraphDetailsViewController: UIViewController {
     @IBAction func btnOpenMapAction(_ sender: UIButton){
         let vc = storyboard?.instantiateViewController(withIdentifier: "MapVC") as! MapVC
         vc.modalPresentationStyle = .fullScreen
+        vc.totalCovidData = self.totalCovidData
+        vc.arrCountries = self.appData.filterdCountries
+        vc.delegate = self
         self.present(vc, animated: true) {
             vc.setMap()
         }
@@ -490,6 +493,17 @@ extension GraphDetailsViewController {
     }
 }
 
+//MARK: delegate call for update
+extension GraphDetailsViewController{
+    func dataFor(_ values: [Country]){
+        if values != self.appData.filterdCountries{
+            self.showProgress(message: "Refresh...")
+            self.appData.filterdCountries = values
+            self.appData.refreshCovidData()
+        }
+    }
+ 
+}
 
 // setting up graphs x and y axis
 extension GraphDetailsViewController {
