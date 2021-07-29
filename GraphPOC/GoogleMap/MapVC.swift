@@ -27,6 +27,7 @@ class MapVC: UIViewController {
     var complitionhandler:complitionhandler?
     var zoom = Float(4)
     override var shouldAutorotate: Bool {
+        self.nib.removeFromSuperview()
         return true
     }
     
@@ -47,7 +48,7 @@ class MapVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+        UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
         UIViewController.attemptRotationToDeviceOrientation()
     }
     
