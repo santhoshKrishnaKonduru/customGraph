@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMaps
+import Toast_Swift
 
 class MapVC: UIViewController {
     typealias complitionhandler = () -> Void
@@ -19,167 +20,157 @@ class MapVC: UIViewController {
     let nib = UINib(nibName: "CustomMarkerView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CustomMarkerView
     var tappedMarker = GMSMarker()
     var appData = AppData.sharedInstance
-    var markerData: CLLocationCoordinate2D?
+    var markerData: [String]?
     var placeMark: CLPlacemark!
     let geoCoder = CLGeocoder()
-    var arrFlag = ["🏳️","🏳️","🏳️","🏳️","🏳️"]
+    var arrFlag = [String]()
     var count = Int()
     var complitionhandler:complitionhandler?
     var zoom = Float(4)
+    var markerCountryData = [Covid]()
+    var selectedFullData = FullData()
+    var totalCovidData = [FullData]()
+    var delegate: UpdateProtocol?
+    var selectedCountry: Country?
+    var arrCountries: [Country]?
     override var shouldAutorotate: Bool {
         self.nib.removeFromSuperview()
         return true
     }
-    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return [.landscapeLeft,.landscapeRight,.portrait]
     }
     
-    
     //MARK: Default Function
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showProgress(message: "loading....")
-        self.flagView.addShadow(color: #colorLiteral(red: 0.02548495308, green: 0.02617123723, blue: 0.1849866807, alpha: 1))
-        self.flagView.addCornerRadius(radius: 6.0)
-        
+        configureUI()
+        setMap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
+        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         UIViewController.attemptRotationToDeviceOrientation()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
+    }
+    
+    override func loadView() {
+        super.loadView()
+        do {
+            // Set the map style by passing the URL of the local file.
+            if let styleURL = Bundle.main.url(forResource: "Style", withExtension: "json") {
+                self.vwMap.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+            } else {
+                NSLog("Unable to find style.json")
+                self.showErrorAlertWithMsg(msg: "Unable to find style.json")
+            }
+        } catch {
+            self.showErrorAlertWithMsg(msg: "One or more of the map styles failed to load. \(error)")
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
+
     }
     
     //MARK: Actions
     @IBAction func btnBackAction(_ sender: UIButton){
-        self.dismiss(animated: true)
+        self.dismiss(animated: true){
+            self.delegate?.dataFor(self.arrCountries ?? [])
+        }
     }
     
     @IBAction func bntListAction(_ sender: UIButton){
         let vc = storyboard?.instantiateViewController(withIdentifier: "SelectedCovidDataVC") as! SelectedCovidDataVC
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
-        
-        
     }
     
     @IBAction func btnAddAction(_ sender: UIButton){
-        if !self.arrFlag.contains(self.flag(from: self.placeMark.isoCountryCode ?? "🏳️")){
-            self.setflagInsideArray(self.placeMark.isoCountryCode ?? "🏳️")
+        if !self.arrFlag.contains(self.flag(from: self.markerCountryData.last?.CountryCode ?? "🏳️")){
+            self.setflagInsideArray(self.markerCountryData.last?.CountryCode ?? "🏳️")
+            self.nib.btnAddIntoList.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 0.2976702217)
+            self.nib.btnAddIntoList.isUserInteractionEnabled = false
+            self.view.makeToast("Add country")
+        }else{
+            self.view.makeToast("already exist")
         }
-        
-        //   let isExist = DataBaseHelper.sharedInstance.fetchCovidData().contains(where: { covidData in
-        //            if data.country?.ISO2 == covidData.iso{
-        //                return true
-        //            }else{
-        //                return false
-        //            }
-        //        })
-        //
-        //        if isExist{
-        //            self.showAnnouncmentYesNo(withMessage: "Already exist this country. Do you want to add again?") {
-        //                DataBaseHelper.sharedInstance.saveData(data) { msg in
-        //                    self.showAnnouncment(withMessage: msg)
-        //                }
-        //            }
-        //        }else{
-        //            DataBaseHelper.sharedInstance.saveData(data) { msg in
-        //                self.showAnnouncment(withMessage: msg)
-        //            }
-        //        }
     }
-    
-    
 }
 
-
-//MARK:  GMSMapViewDelegate
-extension MapVC: GMSMapViewDelegate{
-    func setMap(){
-        self.appData.countries?.forEach { Country in
-            self.vwMap.animate(toZoom: self.zoom)
-            if let data = getCountriesCordinates.sharedInstanse.dic[Country.ISO2 ?? ""] {
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude:data.latitude, longitude: data.longitude)
-                marker.title = Country.name
-                marker.userData = data
-                DispatchQueue.main.async {
-                    marker.map = self.vwMap
+//MARK: Functions
+extension MapVC{
+    fileprivate func configureUI() {
+        var isNilFirstIndex = false
+        for index in 0...4{
+            print(self.flag(from: self.totalCovidData[safe: index]?.covidData?.last?.CountryCode ?? "🏳️"))
+            if  self.totalCovidData[safe: index] != nil{
+                self.arrFlag.append(self.flag(from: self.totalCovidData[safe: index]?.covidData?.last?.CountryCode ?? "🏳️"))
+            }else{
+                if !isNilFirstIndex{
+                    self.count = index
+                    isNilFirstIndex = true
                 }
+                self.arrFlag.append("🏳️")
             }
         }
-    }
-    //empty the default infowindow
-    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-        return UIView()
-    }
-    
-    // reset custom infowindow whenever marker is tapped
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        self.nib.removeFromSuperview()
-        self.markerData = marker.userData as? CLLocationCoordinate2D
-        self.vwMap.camera = GMSCameraPosition.camera(withTarget: marker.position, zoom: self.zoom)
-        self.vwMap.animate(toZoom: self.zoom)
-        if let data = self.markerData {
-            let location = CLLocationCoordinate2D(latitude: data.latitude, longitude: data.longitude)
-            print(mapView.projection.point(for: location))
-        }
-        self.setMarkerView(marker) { view in
-            self.view.addSubview(view)
-        }
-        return false
+        self.setFlag(self.arrFlag)
+        self.flagView.addShadow(color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+        self.flagView.addCornerRadius(radius: 6.0)
     }
     
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        guard let data = self.markerData else {
-            return
-        }
-        let location = CLLocationCoordinate2D(latitude: data.latitude, longitude: data.longitude)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
-            self.nib.center = mapView.projection.point(for: location)
-        })
-        self.zoom = mapView.camera.zoom
-    }
-    
-    // take care of the close event
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        self.nib.removeFromSuperview()
-    }
-    
-    func setMarkerView(_ marker: GMSMarker, complition: @escaping (UIView) -> Void){
-        if let cordinate = marker.userData as? CLLocationCoordinate2D{
-            let location = CLLocation(latitude: cordinate.latitude, longitude: cordinate.longitude)
-            geoCoder.reverseGeocodeLocation(location, completionHandler: {  (placemarks, error) -> Void in
-                self.placeMark = placemarks?[0]
-                self.nib.setCustomMarkerViewdata(self.placeMark)
+    func getIsoGodeFromlocal(_ marker: GMSMarker, index: Int){
+        if let data = self.appData.countries?[index]{
+            self.vwMap.camera = GMSCameraPosition.camera(withTarget: marker.position, zoom: self.zoom)
+            self.vwMap.animate(toZoom: self.zoom)
+            self.showProgress(message: "loading...")
+            self.appData.getCovidData(by: data) { covidData in
+                self.markerCountryData = covidData?.covidData ?? []
+                self.selectedFullData = covidData ?? FullData()
+                self.setColorAddButtonOnMap()
+                self.nib.setCustomMarkerViewdata(self.markerCountryData)
                 self.nib.btnAddIntoList.addTarget(self, action: #selector(self.btnAddAction(_:)), for: .touchUpInside)
-                DispatchQueue.main.async {
-                    complition(self.nib)
-                }
-            })
+                self.view.addSubview(self.nib)
+            }
         }
+        self.selectedCountry = self.appData.countries?[index]
+    }
+    
+    func setColorAddButtonOnMap(){
+        let _ =  self.arrCountries?.contains(where: { Country in
+            if Country.ISO2 == self.markerCountryData.last?.CountryCode{
+                self.nib.btnAddIntoList.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 0.2001211984)
+                self.nib.btnAddIntoList.isUserInteractionEnabled = false
+                return true
+            }else{
+                self.nib.btnAddIntoList.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+                self.nib.btnAddIntoList.isUserInteractionEnabled = true
+                return false
+            }
+        })
     }
     
     func setflagInsideArray(_ code: String){
         if self.count <= 4{
             self.arrFlag.remove(at: self.count)
-            if self.placeMark.isoCountryCode == nil{
+            self.arrCountries?.remove(at: self.count)
+            if self.markerCountryData.last?.CountryCode == nil{
                 self.arrFlag.insert("🏳️", at: self.count)
             }else{
                 self.arrFlag.insert(self.flag(from: code), at: self.count)
+                self.arrCountries?.insert(self.selectedCountry!, at: self.count)
             }
             self.count += 1
         }else{
             self.count = 0
             self.arrFlag.remove(at: self.count)
-            self.arrFlag.insert(self.flag(from: self.placeMark.isoCountryCode ?? "🏳️"), at: self.count)
+            self.arrCountries?.remove(at: self.count)
+            self.arrCountries?.insert(self.selectedCountry!, at: self.count)
+            self.arrFlag.insert(self.flag(from: self.markerCountryData.last?.CountryCode ?? "🏳️"), at: self.count)
             self.count += 1
         }
         self.setFlag(self.arrFlag)
@@ -193,5 +184,62 @@ extension MapVC: GMSMapViewDelegate{
         }
         index = 0
     }
+}
+
+//MARK:  GMSMapViewDelegate
+extension MapVC: GMSMapViewDelegate{
+    func setMap(){
+        self.appData.countries!.forEach { Country in
+            self.vwMap.animate(toZoom: self.zoom)
+           
+            if let data = getCountriesCordinates.sharedInstanse.dic[Country.ISO2 ?? ""] {
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude:data.latitude, longitude: data.longitude)
+                DispatchQueue.main.async{
+                    marker.accessibilityValue = "\(data)"
+                marker.map = self.vwMap
+                }
+            }
+        }
+    }
+    //empty the default infowindow
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        return UIView()
+    }
+    
+    // reset custom infowindow whenever marker is tapped
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        let cordinate = marker.accessibilityValue?.replacingOccurrences(of: "CLLocationCoordinate2D(latitude: ", with: "").replacingOccurrences(of: " longitude: ", with: "").replacingOccurrences(of: ")", with: "")
+        let split = cordinate?.components(separatedBy: ",")
+        self.nib.removeFromSuperview()
+        self.markerData = split
+        let location = CLLocation(latitude: split?[0].toDouble() ?? 0.0, longitude: split?[1].toDouble() ?? 0.0)
+        self.setMarkerOnMap(location, marker)
+        return false
+    }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        let location = CLLocationCoordinate2D(latitude: self.markerData?[0].toDouble() ?? 0.0, longitude: self.markerData?[1].toDouble() ?? 0.0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
+            self.nib.center = mapView.projection.point(for: location)
+        })
+        self.zoom = mapView.camera.zoom
+    }
+    
+    // take care of the close event
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        self.nib.removeFromSuperview()
+    }
+    
+    func setMarkerOnMap(_ location: CLLocation, _ marker: GMSMarker){
+        geoCoder.reverseGeocodeLocation(location, completionHandler: {  (placemarks, error) -> Void in
+            guard let index = self.appData.countries?.firstIndex(where: { Country in
+                if Country.ISO2 ==  placemarks?[0].isoCountryCode{return true}else{return false}
+            })else{return}
+            self.getIsoGodeFromlocal(marker, index: index)
+           
+        })
+    }
+   
 }
 

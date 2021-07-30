@@ -75,6 +75,7 @@ extension UIViewController {
 //        return s
 //    }
     
+   
     func showErrorAlertWithMsg(msg:String){
         showSliderAlert(message: msg, title: "Oops...", buttonTitle: "OK")
     }

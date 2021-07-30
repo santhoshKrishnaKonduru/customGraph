@@ -18,15 +18,18 @@ class CustomMarkerView: UIView {
     @IBOutlet weak var lblTotalRecover: UILabel!
     @IBOutlet weak var btnAddIntoList: UIButton!
     
-    func setCustomMarkerViewdata(_ placeMark: CLPlacemark){
-        self.lblCountryName.text = placeMark.country
-        self.lblTotalCase.text = "Total Cases:  0.0"
-        self.lblFlag.text = self.flag(from: placeMark.isoCountryCode ?? "")
-        self.lblTotalDeath.text = "Deaths:   0.0"
-        self.lblTotalRecover.text = "Recovers   0.0"
+    func setCustomMarkerViewdata(_ placeMark: [Covid]){
+        self.lblCountryName.text = placeMark.last?.countryName
+        self.lblTotalCase.text = "Total Cases:  \(placeMark.last?.Confirmed ?? 0.0)"
+        self.lblFlag.text = self.flag(from: placeMark.last?.CountryCode ?? "🏳️")
+        self.lblTotalDeath.text = "Deaths:   \(placeMark.last?.Deaths ?? 0.0)"
+        self.lblTotalRecover.text = "Recovers   \(placeMark.last?.Recovered ?? 0.0)"
         self.btnAddIntoList.setCornerForButton(8)
         self.setCornerForButton(8)
-        self.backgroundColor = .white
+//        self.btnAddIntoList.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+       // self.addShadow(color: .white)
+       // self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
 
 }

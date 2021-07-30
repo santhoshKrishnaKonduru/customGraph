@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 typealias CompletionBlock = (AlamofireAPIResponse) -> Void
 typealias JSON = AnyObject
@@ -28,6 +29,10 @@ struct SegueIdentifier {
 //MARK:NotificationName
 extension Notification.Name {
     static let kExampleNotification = Notification.Name("ExampleNotification")
+}
+
+struct MainClass {
+    static let appdelegate = UIApplication.shared.delegate as? AppDelegate
 }
 
 //MARK:APIKeys

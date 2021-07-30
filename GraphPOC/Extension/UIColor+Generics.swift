@@ -18,7 +18,7 @@ extension UIColor{
     
     static let navigationTitleColor = UIColor.black
     static let navigationTintColor = UIColor.black
-    @objc static let darkGrayColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 76.0/255.0, alpha: 1.0)
+ //   @objc static let darkGrayColor = UIColor(red: 77.0/255.0, green: 77.0/255.0, blue: 76.0/255.0, alpha: 1.0)
     static let sectionHeaderColor =  UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: CGFloat(0.50))
     static let statusRequestedColor = UIColor(red: 255.0/255.0, green: 163.0/255.0, blue: 0.0/255.0, alpha: 1.0)
     static let statusCancelledColor = UIColor(red: 85.0/255.0, green: 60.0/255.0, blue: 110.0/255.0, alpha: 1.0)
