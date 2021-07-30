@@ -74,6 +74,8 @@ class MapVC: UIViewController {
     @IBAction func btnAddAction(_ sender: UIButton){
         if !self.arrFlag.contains(self.flag(from: self.markerCountryData.last?.CountryCode ?? "🏳️")){
             self.setflagInsideArray(self.markerCountryData.last?.CountryCode ?? "🏳️")
+            self.nib.btnAddIntoList.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2018518772)
+            self.nib.btnAddIntoList.isUserInteractionEnabled = false
             self.view.makeToast("Add country")
         }else{
             self.view.makeToast("already exist")
@@ -155,6 +157,17 @@ extension MapVC: GMSMapViewDelegate{
                 self.appData.getCovidData(by: data) { covidData in
                     self.markerCountryData = covidData?.covidData ?? []
                     self.selectedFullData = covidData ?? FullData()
+                  let _ =  self.arrCountries?.contains(where: { Country in
+                    if Country.ISO2 == self.markerCountryData.last?.CountryCode{
+                        self.nib.btnAddIntoList.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2018518772)
+                        self.nib.btnAddIntoList.isUserInteractionEnabled = false
+                        return true
+                    }else{
+                        self.nib.btnAddIntoList.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                        self.nib.btnAddIntoList.isUserInteractionEnabled = true
+                        return false
+                    }
+                    })
                     self.nib.setCustomMarkerViewdata(self.markerCountryData)
                     self.nib.btnAddIntoList.addTarget(self, action: #selector(self.btnAddAction(_:)), for: .touchUpInside)
                     self.view.addSubview(self.nib)

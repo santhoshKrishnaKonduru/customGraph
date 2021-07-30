@@ -69,9 +69,9 @@ class LaunchViewController: UIViewController {
     
     func getWorldCovidData() {
         AppData.sharedInstance.getWorldCovidData {
-            self.activityIndicator.stopAnimating()
-            let graphDetailsVC = GraphDetailsViewController.instantiate(fromAppStoryboard: .Main)
-            self.navigationController?.pushViewController(graphDetailsVC, animated: true)
+                self.activityIndicator.stopAnimating()
+                let graphDetailsVC = GraphDetailsViewController.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(graphDetailsVC, animated: true)
         }
     }
     

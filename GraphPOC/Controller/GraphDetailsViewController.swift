@@ -497,9 +497,12 @@ extension GraphDetailsViewController {
 extension GraphDetailsViewController{
     func dataFor(_ values: [Country]){
         if values != self.appData.filterdCountries{
+            MainClass.appdelegate?.refreshData = true
             self.showProgress(message: "Refresh...")
             self.appData.filterdCountries = values
-            self.appData.refreshCovidData()
+            self.appData.refreshCovidData(){
+               // print("done refresh")
+            }
         }
     }
  

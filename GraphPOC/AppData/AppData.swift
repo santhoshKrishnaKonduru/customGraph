@@ -63,7 +63,10 @@ extension AppData {
         }else {
             currentIndex = 0
             print("fetched covid data for counties", totalCovidData.count)
-            covidDataCompletionBlock?()
+//            if !(MainClass.appdelegate?.refreshData ?? Bool()){
+                covidDataCompletionBlock?()
+//            }
+           
         }
     }
     
@@ -92,7 +95,7 @@ extension AppData {
             completion?(nil)
             return
         }
-        let totaldata = FullData()//FullData(country: nil, TotalConfirmed: nil, covidData: nil, graphColor: nil)
+        let totaldata = FullData()
         totaldata.country = country
         
         covidData = covidData?.filterDuplicates(includeElement: { (session1, session2) -> Bool in
