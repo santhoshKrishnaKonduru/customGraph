@@ -84,12 +84,16 @@ class MapVC: UIViewController {
     
     //MARK: Functions
     fileprivate func configureUI() {
-        print(totalCovidData)
-        for index in 0...5{
+        var isNilFirstIndex = false
+        for index in 0...4{
             print(self.flag(from: self.totalCovidData[safe: index]?.covidData?.last?.CountryCode ?? "🏳️"))
             if  self.totalCovidData[safe: index] != nil{
                 self.arrFlag.append(self.flag(from: self.totalCovidData[safe: index]?.covidData?.last?.CountryCode ?? "🏳️"))
             }else{
+                if !isNilFirstIndex{
+                    self.count = index
+                    isNilFirstIndex = true
+                }
                 self.arrFlag.append("🏳️")
             }
         }
