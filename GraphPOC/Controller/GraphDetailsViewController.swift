@@ -335,9 +335,7 @@ class GraphDetailsViewController: UIViewController, UpdateProtocol {
         vc.totalCovidData = self.totalCovidData
         vc.arrCountries = self.appData.filterdCountries
         vc.delegate = self
-        self.present(vc, animated: true) {
-            vc.setMap()
-        }
+        self.present(vc, animated: false)
     }
     
     @IBAction func didTapOnWeek(_ sender: Any) {
@@ -501,7 +499,6 @@ extension GraphDetailsViewController{
             self.showProgress(message: "Refresh...")
             self.appData.filterdCountries = values
             self.appData.refreshCovidData(){
-               // print("done refresh")
             }
         }
     }

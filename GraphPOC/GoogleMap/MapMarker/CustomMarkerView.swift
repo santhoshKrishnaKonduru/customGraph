@@ -26,7 +26,10 @@ class CustomMarkerView: UIView {
         self.lblTotalRecover.text = "Recovers   \(placeMark.last?.Recovered ?? 0.0)"
         self.btnAddIntoList.setCornerForButton(8)
         self.setCornerForButton(8)
-        self.backgroundColor = .white
+//        self.btnAddIntoList.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+       // self.addShadow(color: .white)
+       // self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
 
 }

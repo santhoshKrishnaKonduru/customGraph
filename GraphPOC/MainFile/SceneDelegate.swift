@@ -13,13 +13,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     
     var window: UIWindow?
-
+    private(set) static var shared: SceneDelegate?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
-        
+        SceneDelegate.shared = self
         GMSServices.provideAPIKey(Keys.googleApiKey)
-        
+//        sleep(0)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
