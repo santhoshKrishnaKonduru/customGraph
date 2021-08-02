@@ -8,6 +8,8 @@
 import UIKit
 import GoogleMaps
 import Toast_Swift
+import SDLoader
+
 
 class MapVC: UIViewController {
     typealias complitionhandler = () -> Void
@@ -18,6 +20,7 @@ class MapVC: UIViewController {
     
     //MARK: Variables
     let nib = UINib(nibName: "CustomMarkerView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CustomMarkerView
+    let sdLoader = SDLoader()
     var tappedMarker = GMSMarker()
     var appData = AppData.sharedInstance
     var markerData: [String]?
@@ -45,7 +48,8 @@ class MapVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.showProgress(message: "loading....")
+        self.sdLoader.startAnimating(atView: self.view)
+//        self.showProgress(message: "loading....")
         configureUI()
         setMap()
     }
@@ -59,6 +63,7 @@ class MapVC: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
+    
     
     override func loadView() {
         super.loadView()
@@ -129,6 +134,8 @@ extension MapVC{
             self.vwMap.animate(toZoom: self.zoom)
             self.showProgress(message: "loading...")
             self.appData.getCovidData(by: data) { covidData in
+                
+                print(covidData?.country?.countryFlag)
                 self.markerCountryData = covidData?.covidData ?? []
                 self.selectedFullData = covidData ?? FullData()
                 self.setColorAddButtonOnMap()
@@ -191,16 +198,22 @@ extension MapVC: GMSMapViewDelegate{
     func setMap(){
         self.appData.countries!.forEach { Country in
             self.vwMap.animate(toZoom: self.zoom)
-           
             if let data = getCountriesCordinates.sharedInstanse.dic[Country.ISO2 ?? ""] {
                 let marker = GMSMarker()
                 marker.position = CLLocationCoordinate2D(latitude:data.latitude, longitude: data.longitude)
                 DispatchQueue.main.async{
-                    marker.accessibilityValue = "\(data)"
+                    print(self.appData.countryFlags)
+                 let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                    lbl.backgroundColor = .clear
+                    lbl.text = self.flag(from: Country.ISO2 ?? "")
+                    lbl.textAlignment = .center
+                    marker.iconView = lbl
+                marker.accessibilityValue = "\(data)"
                 marker.map = self.vwMap
                 }
             }
         }
+        
     }
     //empty the default infowindow
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
@@ -219,11 +232,19 @@ extension MapVC: GMSMapViewDelegate{
     }
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        defer{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                self.sdLoader.stopAnimation()
+            }
+        }
         let location = CLLocationCoordinate2D(latitude: self.markerData?[0].toDouble() ?? 0.0, longitude: self.markerData?[1].toDouble() ?? 0.0)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
             self.nib.center = mapView.projection.point(for: location)
         })
         self.zoom = mapView.camera.zoom
+        
+        
+        
     }
     
     // take care of the close event

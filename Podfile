@@ -18,6 +18,8 @@ target 'GraphPOC' do
   pod 'ObjectMapper'
   pod 'GoogleMaps'
   pod 'Toast-Swift'
+  pod 'SDLoader'
+  pod 'SVGKit'
   # Pods for GraphPOC
 
 end

@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (5.4.1)
+  - CocoaLumberjack (3.7.2):
+    - CocoaLumberjack/Core (= 3.7.2)
+  - CocoaLumberjack/Core (3.7.2)
   - GoogleMaps (5.1.0):
     - GoogleMaps/Maps (= 5.1.0)
   - GoogleMaps/Base (5.1.0)
@@ -18,8 +21,11 @@ PODS:
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
   - ObjectMapper (4.2.0)
+  - SDLoader (0.2.0)
   - SideMenu (6.5.0)
   - SnapKit (5.0.1)
+  - SVGKit (3.0.0):
+    - CocoaLumberjack (~> 3.0)
   - SVProgressHUD (2.2.5)
   - SwiftMessages (9.0.0):
     - SwiftMessages/App (= 9.0.0)
@@ -36,8 +42,10 @@ DEPENDENCIES:
   - NotificationBannerSwift
   - NVActivityIndicatorView
   - ObjectMapper
+  - SDLoader
   - SideMenu
   - SnapKit
+  - SVGKit
   - SVProgressHUD
   - SwiftMessages
   - Toast-Swift
@@ -46,6 +54,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - CocoaLumberjack
     - GoogleMaps
     - IQKeyboardManagerSwift
     - Kingfisher
@@ -55,8 +64,10 @@ SPEC REPOS:
     - NotificationBannerSwift
     - NVActivityIndicatorView
     - ObjectMapper
+    - SDLoader
     - SideMenu
     - SnapKit
+    - SVGKit
     - SVProgressHUD
     - SwiftMessages
     - Toast-Swift
@@ -64,6 +75,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   GoogleMaps: 086ae1dab659eaa7339bdb30fc88e2f44e7c597c
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: e71c6fac2aebb1262888cabc2cb13d313362a48f
@@ -73,13 +85,15 @@ SPEC CHECKSUMS:
   NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  SDLoader: e35b571db413a4a98b6f58469b16dc095289c9f6
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftMessages: 55274ca3a239062398603008ed81924cfd1fe798
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 79993eb8223e0a171ee0cf27023e66328176f4d5
+PODFILE CHECKSUM: d93ca39da62adbb060ceeec943bc0cfca7b827f1
 
 COCOAPODS: 1.10.2

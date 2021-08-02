@@ -24,7 +24,6 @@ class CovidDetailsViewController: UIViewController {
     }
     
     func setData() {
-        
         imageView.image = selectedCovidData.country?.countryFlag
         countryLabel.text = "Country: \(selectedCovidData.country?.name ?? "")"
         totalCasesLabel.text = "Totel cases: \(selectedCovidData.TotalConfirmed ?? 0)"
