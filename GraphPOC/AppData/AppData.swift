@@ -49,9 +49,7 @@ extension AppData {
     }
     
     func getWorldCovidData(completion: (() -> ())? = nil) {
-        if covidDataCompletionBlock == nil {
-            covidDataCompletionBlock = completion
-        }
+        covidDataCompletionBlock = completion
         if let country = self.filterdCountries?[safe: currentIndex] {
             currentIndex = currentIndex + 1
             getCovidData(by: country) { data in

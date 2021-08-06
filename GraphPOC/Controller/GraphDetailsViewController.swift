@@ -169,7 +169,7 @@ class GraphDetailsViewController: UIViewController {
     
     func refreshData() {
         setup()
-        self.setCalendarComponentsBasedOn(state: self.currentState, date: self.currentDate)        
+        self.setCalendarComponentsBasedOn(state: self.currentState, date: self.currentDate)
     }
     
     func showSleepTerndsBasedOn(state: SleepTrrendState) {
@@ -506,6 +506,7 @@ extension GraphDetailsViewController: UpdateProtocol{
             self.showProgress(message: "Refresh...")
             self.appData.filterdCountries = values
             self.appData.refreshCovidData {
+                self.hideProgress()
                 self.refreshData()
             }
         }
