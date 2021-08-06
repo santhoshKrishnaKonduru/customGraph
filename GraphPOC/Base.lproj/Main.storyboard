@@ -1084,6 +1084,15 @@
                                     <action selector="didTapOnLeftButton:" destination="fI8-Of-hSd" eventType="touchUpInside" id="xCb-rP-O58"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="RW2-Hf-cFE">
+                                <rect key="frame" x="182" y="428" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8eX-Hv-O5e"/>
+                                    <constraint firstAttribute="width" secondItem="RW2-Hf-cFE" secondAttribute="height" multiplier="1:1" id="zbq-aa-zo6"/>
+                                </constraints>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VPD-Ih-Hp2"/>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.027450980390000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -1094,12 +1103,14 @@
                             <constraint firstItem="AU2-Zc-qI9" firstAttribute="centerX" secondItem="90K-o7-Cuk" secondAttribute="centerX" id="CSu-k7-Vqf"/>
                             <constraint firstItem="Y2E-U5-gyd" firstAttribute="top" secondItem="AU2-Zc-qI9" secondAttribute="bottom" constant="8" id="FMp-7x-45R"/>
                             <constraint firstItem="AU2-Zc-qI9" firstAttribute="top" secondItem="FcK-SJ-u5h" secondAttribute="bottom" constant="30" id="J2Q-MX-bkb"/>
+                            <constraint firstItem="RW2-Hf-cFE" firstAttribute="centerX" secondItem="VPD-Ih-Hp2" secondAttribute="centerX" id="JPU-St-ud6"/>
                             <constraint firstItem="VPD-Ih-Hp2" firstAttribute="trailing" secondItem="xEd-hD-zgQ" secondAttribute="trailing" constant="11.470000000000001" id="Lsv-gy-Uf0"/>
                             <constraint firstItem="VPD-Ih-Hp2" firstAttribute="trailing" secondItem="Pf8-EL-19H" secondAttribute="trailing" constant="20" id="ORJ-ql-cHE"/>
                             <constraint firstItem="Mps-VZ-pnA" firstAttribute="centerY" secondItem="2VZ-0p-VF2" secondAttribute="centerY" id="OfM-qJ-Oj1"/>
                             <constraint firstItem="VPD-Ih-Hp2" firstAttribute="trailing" secondItem="FcK-SJ-u5h" secondAttribute="trailing" constant="68" id="TzM-oo-CsF"/>
                             <constraint firstItem="VPD-Ih-Hp2" firstAttribute="trailing" secondItem="VJr-SK-srO" secondAttribute="trailing" constant="30" id="Xhn-yh-Cl5"/>
                             <constraint firstItem="VPD-Ih-Hp2" firstAttribute="trailing" secondItem="crx-XF-voy" secondAttribute="trailing" constant="10" id="Ze8-Yb-51B"/>
+                            <constraint firstItem="RW2-Hf-cFE" firstAttribute="centerY" secondItem="VPD-Ih-Hp2" secondAttribute="centerY" id="dhJ-dg-eQP"/>
                             <constraint firstItem="VPD-Ih-Hp2" firstAttribute="bottom" secondItem="xEd-hD-zgQ" secondAttribute="bottom" id="djV-VQ-b6j"/>
                             <constraint firstItem="Pf8-EL-19H" firstAttribute="centerY" secondItem="VJr-SK-srO" secondAttribute="centerY" id="g4E-9J-zFR"/>
                             <constraint firstItem="FcK-SJ-u5h" firstAttribute="leading" secondItem="VPD-Ih-Hp2" secondAttribute="leading" constant="66" id="gcg-I8-SET"/>
@@ -1112,6 +1123,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityLoader" destination="RW2-Hf-cFE" id="NR0-hx-KhL"/>
                         <outlet property="curedCasesGraphView" destination="EvN-8k-k0t" id="CBv-3o-hiC"/>
                         <outlet property="curedCasesScrollView" destination="mBi-rB-62H" id="QaP-lV-cuV"/>
                         <outlet property="curedCasesScrollViewContainerView" destination="NQA-54-Ndw" id="BUT-Mx-XSG"/>

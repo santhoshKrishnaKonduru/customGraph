@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol UpdateProtocol {
+protocol UpdateGraphProtocol {
 
-    func dataFor(_ values: [Country])
+    func selectedCountries(_ values: [Country])
 }

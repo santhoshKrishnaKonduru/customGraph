@@ -33,7 +33,7 @@ class MapVC: UIViewController {
     var markerCountryData = [Covid]()
     var selectedFullData = FullData()
     var totalCovidData = [FullData]()
-    var delegate: UpdateProtocol?
+    var delegate: UpdateGraphProtocol?
     var selectedCountry: Country?
     var arrCountries: [Country]?
     override var shouldAutorotate: Bool {
@@ -85,7 +85,7 @@ class MapVC: UIViewController {
     //MARK: Actions
     @IBAction func btnBackAction(_ sender: UIButton){
         self.dismiss(animated: true){
-            self.delegate?.dataFor(self.arrCountries ?? [])
+            self.delegate?.selectedCountries(self.arrCountries ?? [])
         }
     }
     
@@ -134,8 +134,6 @@ extension MapVC{
             self.vwMap.animate(toZoom: self.zoom)
             self.showProgress(message: "loading...")
             self.appData.getCovidData(by: data) { covidData in
-                
-                print(covidData?.country?.countryFlag)
                 self.markerCountryData = covidData?.covidData ?? []
                 self.selectedFullData = covidData ?? FullData()
                 self.setColorAddButtonOnMap()
