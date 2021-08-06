@@ -78,6 +78,8 @@ class GraphDetailsViewController: UIViewController {
     @IBOutlet weak var deathCasesScrollViewContainerView: UIView!
     
     @IBOutlet weak var deathCasesXAxisStackView: UIStackView!
+    @IBOutlet  weak var activityLoader: UIActivityIndicatorView!
+    
 
     //MARK: Variables
     var currentState: SleepTrrendState = .week
@@ -85,7 +87,7 @@ class GraphDetailsViewController: UIViewController {
     var currentDatesInGraph = [Date]()
     var totalCovidData = [FullData]()
     var rowHeight: CGFloat = 42
-    
+    var timer: Timer?
     // world confirm cases
     var countryConfirmCasesBarViews = [UIView]()
     var countryConfirmCasesDefaultBarViews = [UIView]()
@@ -103,6 +105,7 @@ class GraphDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.activityLoader.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -161,11 +164,11 @@ class GraphDetailsViewController: UIViewController {
         worldCasesScrollView.indicatorStyle = .white
         totalCasesScrollView.indicatorStyle = .white
         deathCasesScrollView.indicatorStyle = .white
-        
         totalCovidData = appData.getCovidDataFromSelectedDateRange(date: currentDate, dateType: currentState)
-        
+        self.hideProgress()
     }
     
+
     
     func refreshData() {
         setup()
@@ -498,19 +501,28 @@ extension GraphDetailsViewController {
 }
 
 //MARK: delegate call for update
-extension GraphDetailsViewController: UpdateProtocol{
+extension GraphDetailsViewController: UpdateGraphProtocol{
     
-    func dataFor(_ values: [Country]){
+    func selectedCountries(_ values: [Country]){
         if values != self.appData.filterdCountries{
-         //   MainClass.appdelegate?.refreshData = true
-            self.showProgress(message: "Refresh...")
+            self.activityLoader.isHidden = false
+            self.activityLoader.startAnimating()
+            self.view.isUserInteractionEnabled = false
             self.appData.filterdCountries = values
-            self.appData.refreshCovidData {
-                self.hideProgress()
+            self.appData.refreshCovidData { [self] in
                 self.refreshData()
+                self.activityLoader.stopAnimating()
+                self.activityLoader.isHidden = true
+                self.view.isUserInteractionEnabled = true
+            
             }
         }
     }
+    
+    func stopTimer() {
+            timer?.invalidate()
+            timer = nil
+        }
  
 }
 

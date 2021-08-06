@@ -22,7 +22,6 @@ class AppData: NSObject {
     }
     
     var countries: [Country]?
-    
     var filterdCountries: [Country]?
     
     var apiWrapper = AlamofireAPIWrapper.sharedInstance
