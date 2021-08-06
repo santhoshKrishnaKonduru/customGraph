@@ -20,7 +20,7 @@ enum SleepTrrendState: String {
 }
 
 
-class GraphDetailsViewController: UIViewController, UpdateProtocol {
+class GraphDetailsViewController: UIViewController {
    
     //MARK: Outlets
     @IBOutlet weak var pagerView: UIView!
@@ -164,6 +164,12 @@ class GraphDetailsViewController: UIViewController, UpdateProtocol {
         
         totalCovidData = appData.getCovidDataFromSelectedDateRange(date: currentDate, dateType: currentState)
         
+    }
+    
+    
+    func refreshData() {
+        setup()
+        self.setCalendarComponentsBasedOn(state: self.currentState, date: self.currentDate)        
     }
     
     func showSleepTerndsBasedOn(state: SleepTrrendState) {
@@ -492,13 +498,15 @@ extension GraphDetailsViewController {
 }
 
 //MARK: delegate call for update
-extension GraphDetailsViewController{
+extension GraphDetailsViewController: UpdateProtocol{
+    
     func dataFor(_ values: [Country]){
         if values != self.appData.filterdCountries{
-            MainClass.appdelegate?.refreshData = true
+         //   MainClass.appdelegate?.refreshData = true
             self.showProgress(message: "Refresh...")
             self.appData.filterdCountries = values
-            self.appData.refreshCovidData(){
+            self.appData.refreshCovidData {
+                self.refreshData()
             }
         }
     }
@@ -758,10 +766,8 @@ extension GraphDetailsViewController {
                         var currentCaseValue: Double = 0
                         if graphType == .confirmed {
                             currentCaseValue = abs(covidData.currentConfirmed!)
-                            print("confirmed", covidData.currentConfirmed)
                         }else if graphType == .cured {
                             currentCaseValue = abs(covidData.currentRecovered!)
-                            print("cured", covidData.currentRecovered)
                         }else if graphType == .deaths {
                             currentCaseValue = abs(covidData.currentDeaths!)
                         }

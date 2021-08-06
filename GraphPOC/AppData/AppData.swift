@@ -63,10 +63,8 @@ extension AppData {
         }else {
             currentIndex = 0
             print("fetched covid data for counties", totalCovidData.count)
-//            if !(MainClass.appdelegate?.refreshData ?? Bool()){
-                covidDataCompletionBlock?()
-//            }
-           
+            covidDataCompletionBlock?()
+            covidDataCompletionBlock = nil
         }
     }
     

@@ -112,7 +112,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "loadAllCountryImagesResponse(response:)"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -128,8 +128,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
             endingLineNumber = "38"
-            landmarkName = "loadAllCountryImagesResponse(response:)"
-            landmarkType = "7">
+            landmarkName = "LaunchViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -151,22 +151,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "992A9264-AEEA-433F-B515-6EC2D6EC6EA0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "765"
-            endingLineNumber = "765"
-            landmarkName = "loadGraphDetails(scrollViewContainerView:covidData:graphType:xAxisStackView:yAxisStackView:yPositionRanges:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9B06AA91-570D-4234-B319-332F0B7DE69C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -174,8 +158,8 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "updateCalendarDetailsBasedOnSessions()"
             landmarkType = "7">
             <Locations>
@@ -222,8 +206,8 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "updateCalendarDetailsBasedOnSessions()"
             landmarkType = "7">
          </BreakpointContent>
@@ -260,7 +244,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "4F1BFDBC-094C-4709-894D-E17EB94E6D61 - 96cf3829fe3a5951"
+                  uuid = "4F1BFDBC-094C-4709-894D-E17EB94E6D61 - 96cf3829fe3a5659"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -270,24 +254,24 @@
                   urlString = "file:///Users/santhoshkonduru/Desktop/GraphPOC/GraphPOC/AppData/AppData.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "608">
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "1051">
                </Location>
                <Location
-                  uuid = "4F1BFDBC-094C-4709-894D-E17EB94E6D61 - 402b48db316d0694"
+                  uuid = "4F1BFDBC-094C-4709-894D-E17EB94E6D61 - 76a4eac4e6f70dc1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in GraphPOC.AppData.getWorldCovidData(completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;GraphPOC.FullData&gt;) -&gt; () in GraphPOC.AppData.getWorldCovidData(completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
                   moduleName = "GraphPOC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/santhoshkonduru/Desktop/GraphPOC/GraphPOC/AppData/AppData.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "26">
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "106">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -304,7 +288,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
             endingLineNumber = "61"
-            landmarkName = "getWorldCovidData()"
+            landmarkName = "getAllCountries()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -320,7 +304,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "getWorldCovidData()"
+            landmarkName = "getAllCountries()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -350,42 +334,10 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "updateCalendarDetailsBasedOnSessions()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "EF03DA1A-D2B4-42B9-A2D5-1F56CCE81916 - e7b665b8a6b85a37"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GraphPOC.GraphDetailsViewController.updateCalendarDetailsBasedOnSessions() -&gt; ()"
-                  moduleName = "GraphPOC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/santhoshkonduru/Desktop/GraphPOC/GraphPOC/Controller/GraphDetailsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "247"
-                  endingLineNumber = "247"
-                  offsetFromSymbolStart = "2829">
-               </Location>
-               <Location
-                  uuid = "EF03DA1A-D2B4-42B9-A2D5-1F56CCE81916 - 4bd067cae5f0af04"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #5 (GraphPOC.Covid) -&gt; Swift.Optional&lt;Swift.Double&gt; in GraphPOC.GraphDetailsViewController.updateCalendarDetailsBasedOnSessions() -&gt; ()"
-                  moduleName = "GraphPOC"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/santhoshkonduru/Desktop/GraphPOC/GraphPOC/Controller/GraphDetailsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "247"
-                  endingLineNumber = "247"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -398,8 +350,8 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "updateCalendarDetailsBasedOnSessions()"
             landmarkType = "7">
          </BreakpointContent>
@@ -414,8 +366,8 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "setCalendarComponentsBasedOn(state:date:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -430,10 +382,42 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "updateCalendarDetailsBasedOnSessions()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F269FAB6-277B-4358-8B43-D637C9CB4C02 - e7b665b8a6b85ad4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GraphPOC.GraphDetailsViewController.updateCalendarDetailsBasedOnSessions() -&gt; ()"
+                  moduleName = "GraphPOC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santhoshkonduru/Desktop/GraphPOC/GraphPOC/Controller/GraphDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "248"
+                  endingLineNumber = "248"
+                  offsetFromSymbolStart = "821">
+               </Location>
+               <Location
+                  uuid = "F269FAB6-277B-4358-8B43-D637C9CB4C02 - becd23deb77c0151"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GraphPOC.FullData) -&gt; Swift.Optional&lt;Swift.Double&gt; in GraphPOC.GraphDetailsViewController.updateCalendarDetailsBasedOnSessions() -&gt; ()"
+                  moduleName = "GraphPOC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santhoshkonduru/Desktop/GraphPOC/GraphPOC/Controller/GraphDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "248"
+                  endingLineNumber = "248"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -446,8 +430,8 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "updateCalendarDetailsBasedOnSessions()"
             landmarkType = "7">
          </BreakpointContent>
@@ -462,10 +446,10 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
-            landmarkName = "GraphDetailsViewController"
-            landmarkType = "3">
+            startingLineNumber = "298"
+            endingLineNumber = "298"
+            landmarkName = "updateCalendarDetailsBasedOnSessions()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -478,9 +462,9 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
-            landmarkName = "getYAxisRange(for:)"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "updateCalendarDetailsBasedOnSessions()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -494,8 +478,8 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "updateCalendarDetailsBasedOnSessions()"
             landmarkType = "7">
          </BreakpointContent>
@@ -510,8 +494,8 @@
             filePath = "GraphPOC/AppData/AppData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "loadCovidDataResponse(response:country:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,8 +510,8 @@
             filePath = "GraphPOC/AppData/AppData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "loadCovidDataResponse(response:country:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -542,8 +526,8 @@
             filePath = "GraphPOC/AppData/AppData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "loadCovidDataResponse(response:country:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -558,8 +542,8 @@
             filePath = "GraphPOC/AppData/AppData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "loadCovidDataResponse(response:country:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -574,8 +558,8 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "updateCalendarDetailsBasedOnSessions()"
             landmarkType = "7">
          </BreakpointContent>
@@ -590,8 +574,8 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "updateCalendarDetailsBasedOnSessions()"
             landmarkType = "7">
             <Locations>
@@ -638,8 +622,8 @@
             filePath = "GraphPOC/AppData/AppData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "getCovidDataFromSelectedDateRange(date:dateType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -718,8 +702,8 @@
             filePath = "GraphPOC/AppData/AppData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "getCovidDataFromSelectedDateRange(date:dateType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -734,8 +718,8 @@
             filePath = "GraphPOC/AppData/AppData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "getCovidDataFromSelectedDateRange(date:dateType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -750,8 +734,8 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "740"
-            endingLineNumber = "740"
+            startingLineNumber = "748"
+            endingLineNumber = "748"
             landmarkName = "loadGraphDetails(scrollViewContainerView:covidData:graphType:xAxisStackView:yAxisStackView:yPositionRanges:)"
             landmarkType = "7">
             <Locations>
@@ -798,8 +782,8 @@
             filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "738"
-            endingLineNumber = "738"
+            startingLineNumber = "746"
+            endingLineNumber = "746"
             landmarkName = "loadGraphDetails(scrollViewContainerView:covidData:graphType:xAxisStackView:yAxisStackView:yPositionRanges:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -846,8 +830,8 @@
             filePath = "GraphPOC/AppData/AppData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "loadCovidDataResponse(response:country:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -865,6 +849,102 @@
             startingLineNumber = "61"
             endingLineNumber = "61"
             landmarkName = "getWorldCovidData(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D59BDD5D-C85C-4FC6-AA15-1A3796495F28"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "510"
+            endingLineNumber = "510"
+            landmarkName = "dataFor(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "329F4A47-D671-4ED8-B93D-2A0C2DF90118"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphPOC/AppData/AppData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "getWorldCovidData(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3EAEA885-6B7F-4143-A1E9-849C0AC7C16D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
+            landmarkName = "dataFor(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3EAEA885-6B7F-4143-A1E9-849C0AC7C16D - 8ecf3ff48f44e723"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GraphPOC.GraphDetailsViewController.dataFor(Swift.Array&lt;GraphPOC.Country&gt;) -&gt; ()"
+                  moduleName = "GraphPOC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santhoshkonduru/Desktop/GraphPOC/GraphPOC/Controller/GraphDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "502"
+                  endingLineNumber = "502"
+                  offsetFromSymbolStart = "466">
+               </Location>
+               <Location
+                  uuid = "3EAEA885-6B7F-4143-A1E9-849C0AC7C16D - 59498e58fa98c0a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in GraphPOC.GraphDetailsViewController.dataFor(Swift.Array&lt;GraphPOC.Country&gt;) -&gt; ()"
+                  moduleName = "GraphPOC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/santhoshkonduru/Desktop/GraphPOC/GraphPOC/Controller/GraphDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "503"
+                  endingLineNumber = "503"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2FC876C5-B6D9-4E9A-B669-4301CDE64891"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GraphPOC/Controller/GraphDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "refreshData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
