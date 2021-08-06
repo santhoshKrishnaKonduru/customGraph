@@ -63,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crx-XF-voy">
-                                <rect key="frame" x="324" y="44" width="80" height="40"/>
+                                <rect key="frame" x="364" y="44" width="40" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSV-bL-bNY">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -81,20 +81,6 @@
                                         <connections>
                                             <action selector="btnOpenMapAction:" destination="fI8-Of-hSd" eventType="touchUpInside" id="NNb-U3-Ncb"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xt-iL-zfb">
-                                        <rect key="frame" x="40" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Ssi-IW-CLf"/>
-                                            <constraint firstAttribute="width" secondItem="2Xt-iL-zfb" secondAttribute="height" multiplier="1:1" id="l5F-e3-ikM"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="photo.on.rectangle.angled" catalog="system">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <state key="selected" title="Graph">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1560,7 +1546,6 @@
         <image name="graph_help" width="24" height="24"/>
         <image name="left_arrow_button" width="11" height="19"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
-        <image name="photo.on.rectangle.angled" catalog="system" width="128" height="101"/>
         <image name="right_arrow_button" width="11" height="19"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
